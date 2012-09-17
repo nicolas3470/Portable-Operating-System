@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <Keyword>MakeFileProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeBuildCommandLine>nmake</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>nmake clean</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>nmake /a</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeBuildCommandLine>nmake</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>nmake clean</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>nmake /a</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="alarm.c" />
+    <ClCompile Include="alarmtest1.c" />
+    <ClCompile Include="alarmtest2.c" />
+    <ClCompile Include="conn-network1.c" />
+    <ClCompile Include="conn-network2.c" />
+    <ClCompile Include="conn-network3.c" />
+    <ClCompile Include="disk.c" />
+    <ClCompile Include="end.c" />
+    <ClCompile Include="interrupts.c" />
+    <ClCompile Include="machineprimitives.c" />
+    <ClCompile Include="machineprimitives_x86.c" />
+    <ClCompile Include="minifile.c" />
+    <ClCompile Include="miniheader.c" />
+    <ClCompile Include="minimsg.c" />
+    <ClCompile Include="miniroute.c" />
+    <ClCompile Include="minisocket.c" />
+    <ClCompile Include="minithread.c" />
+    <ClCompile Include="mkfs.c" />
+    <ClCompile Include="multilevel_queue.c" />
+    <ClCompile Include="network.c" />
+    <ClCompile Include="network1.c" />
+    <ClCompile Include="network2.c" />
+    <ClCompile Include="network3.c" />
+    <ClCompile Include="network4.c" />
+    <ClCompile Include="network5.c" />
+    <ClCompile Include="network6.c" />
+    <ClCompile Include="pid_random.c" />
+    <ClCompile Include="preemptester.c" />
+    <ClCompile Include="queue.c" />
+    <ClCompile Include="random.c" />
+    <ClCompile Include="read.c" />
+    <ClCompile Include="shell.c" />
+    <ClCompile Include="sieve.c" />
+    <ClCompile Include="start.c" />
+    <ClCompile Include="synch.c" />
+    <ClCompile Include="wince.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="alarm.h" />
+    <ClInclude Include="defs.h" />
+    <ClInclude Include="disk.h" />
+    <ClInclude Include="interrupts.h" />
+    <ClInclude Include="interrupts_private.h" />
+    <ClInclude Include="machineprimitives.h" />
+    <ClInclude Include="minifile.h" />
+    <ClInclude Include="miniheader.h" />
+    <ClInclude Include="minimsg.h" />
+    <ClInclude Include="miniroute.h" />
+    <ClInclude Include="minisocket.h" />
+    <ClInclude Include="minithread.h" />
+    <ClInclude Include="multilevel_queue.h" />
+    <ClInclude Include="network.h" />
+    <ClInclude Include="pid_random.h" />
+    <ClInclude Include="queue.h" />
+    <ClInclude Include="random.h" />
+    <ClInclude Include="read.h" />
+    <ClInclude Include="read_private.h" />
+    <ClInclude Include="synch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Depend" />
+    <None Include="machineprimitives_arm.S" />
+    <None Include="machineprimitives_x86_64_asm.S" />
+    <None Include="machineprimitives_x86_asm.S" />
+    <None Include="Makefile" />
+    <None Include="Makefile_WinCE" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

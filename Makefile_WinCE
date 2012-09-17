@@ -1,0 +1,72 @@
+# Makefile for minithreads on ARM/WinCE
+
+# You probably do not need to modify this, unless you are adding extra files.
+
+CEVersion=300
+CePlatform=hpc2000
+CESubsystem=windowsce,3.00
+
+# change to the directory used by ActiveSync to synctonize with the PDE
+
+SYNCDIR="C:\Documents and Settings\Administrator\My Documents\Handheld_PC Synchronized Files"
+
+PATH=c:\Program Files\Microsoft eMbedded Tools\EVC\WCE$(CEVersion)\BIN\
+
+INCLUDEPATH="c:\Windows CE Tools\wce$(CEVersion)\$(CePlatform)\include"
+LIBPATH="c:\Windows CE Tools\wce$(CEVersion)\$(CePlatform)\lib\arm"
+
+CC = clarm.exe
+LINK = link.exe
+ASSEMBLER = armasm.exe
+
+WINSOCKLIB = ws2_32.lib
+
+CFLAGS = /I $(INCLUDEPATH) /nologo /W3 /Zi /Od /D "WINCE" /D "ARM" /D "_ARM_" /D UNDER_CE=$(CEVersion) /D _WIN32_WCE=$(CEVersion) /D "$(CePlatform)" /D "UNICODE" /D "_UNICODE" /Fo"" /Fd"" /MC /c 
+LFLAGS =/nologo /base:"0x00010000" /stack:0x10000,0x1000 /entry:"WinMainCRTStartup" /debug /incremental:no /out:"minithreads.exe" /subsystem:$(CESubsystem) /align:"4096" /MACHINE:ARM  /LIBPATH:$(LIBPATH)
+LIB = commctrl.lib coredll.lib winsock.lib
+
+# change this to the name of the file you want to link with minithreads, 
+# dropping the ".c": so to use "sieve.c", change to "MAIN = sieve".
+
+# MAIN = sieve
+
+SYSTEMOBJ =	interrupts.obj \
+
+OBJ = wince.obj\
+	miniroute.obj\
+	miniheader.obj\
+	minisocket.obj\
+	minimsg.obj\
+	disk.obj\
+	minifile.obj\
+	network.obj\
+	alarm.obj\
+	random.obj\
+	minithread.obj \
+	machineprimitives_arm.obj \
+	machineprimitives.obj \
+	queue.obj \
+	$(MAIN).obj \
+	synch.obj \
+	read.obj \
+	multilevel_queue.obj \
+
+all: minithreads.exe copy_to_sync
+
+copy_to_sync:
+	copy /Y /B minithreads.exe $(SYNCDIR)
+
+machineprimitives_arm.obj : machineprimitives_arm.S
+	$(ASSEMBLER) -o machineprimitives_arm.obj machineprimitives_arm.S
+
+.c.obj:
+	$(CC) $(CFLAGS) $<
+
+minithreads.exe: start.obj end.obj $(OBJ) $(SYSTEMOBJ)
+	$(LINK) $(LFLAGS) $(LIB) $(SYSTEMOBJ) start.obj $(OBJ) end.obj $(LFLAGS)
+
+clean:
+	-@del *.obj
+	-@del minithreads.exe
+
+include Depend

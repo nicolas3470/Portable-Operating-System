@@ -1,0 +1,17 @@
+alarm.obj: alarm.c interrupts.h defs.h alarm.h minithread.h \
+  machineprimitives.h queue.h
+end.obj: end.c defs.h
+interrupts.obj: interrupts.c defs.h interrupts_private.h interrupts.h \
+ machineprimitives.h
+machineprimitives.obj: machineprimitives.c defs.h minithread.h \
+ machineprimitives.h
+minithread.obj: minithread.c minithread.h machineprimitives.h defs.h \
+ queue.h synch.h
+network.obj: network.c defs.h network.h interrupts_private.h interrupts.h \
+ minithread.h machineprimitives.h random.h
+pid_random.obj: pid_random.c pid_random.h random.h
+queue.obj: queue.c queue.h
+random.obj: random.c
+start.obj: start.c defs.h
+synch.obj: synch.c defs.h synch.h queue.h minithread.h \
+ machineprimitives.h
